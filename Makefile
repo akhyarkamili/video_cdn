@@ -14,10 +14,16 @@ logging.o: logging.c logging.h
 wrapper.o: wrapper.c wrapper.h
 	$(CC) $(CFLAGS) -c wrapper.c
 
-proxy.o: proxy.c wrapper.h server.h logging.h
+helper.o: helper.c helper.h
+	$(CC) $(CFLAGS) -c helper.c
+
+connection.o: connection.c connection.h
+	$(CC) $(CFLAGS) -c connection.c
+
+proxy.o: proxy.c wrapper.h server.h logging.h helper.h connection.h
 	$(CC) $(CFLAGS) -c proxy.c
 
-proxy: server.o wrapper.o proxy.o logging.o
+proxy: server.o wrapper.o proxy.o logging.o helper.o connection.o
 
 debug: 
 	$(CC) $(DFLAGS) -c server.c

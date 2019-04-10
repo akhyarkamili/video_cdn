@@ -1,3 +1,6 @@
+#ifndef __CONNECTION_H__
+#define __CONNECTION_H__
+
 #include "segment.h"
 #include <time.h>
 
@@ -12,7 +15,7 @@ typedef struct conn {
     struct conn *prev;
 } conn_t;
 
-typedef struct {
+typedef struct conn_list {
     conn_t *head;
     conn_t *tail;
     int size;
@@ -27,3 +30,5 @@ void remove_conn(conn_list_t *cl, conn_t *c);
 
 /* functions for a connection */
 conn_t *new_conn();
+
+#endif
